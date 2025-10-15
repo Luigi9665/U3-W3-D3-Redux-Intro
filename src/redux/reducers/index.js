@@ -28,6 +28,15 @@ const mainReducer = (state = initialState, action) => {
         },
       };
     }
+    case "REMOVE_FROM_FAVORITES":
+      console.log("REMOVE_FROM_FAVORITES");
+      return {
+        ...state,
+        favorites: {
+          ...state.favorites,
+          content: state.favorites.content.filter((job) => job._id !== action.payload._id),
+        },
+      };
     default:
       console.log("DEFAULT");
       return state;
