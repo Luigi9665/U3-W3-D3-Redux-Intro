@@ -13,7 +13,7 @@ const MainSearch = () => {
 
   const favoriteLength = useSelector((state) => state.favorites.content.length);
 
-  const searchResults = useSelector((state) => state.searchResults.content);
+  // const searchResults = useSelector((state) => state.searchResults.content);
 
   const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 

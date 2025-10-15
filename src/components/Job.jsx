@@ -22,6 +22,7 @@ const Job = ({ data }) => {
   const starClick = () => {
     if (favorite) {
       dispatch({ type: "REMOVE_FROM_FAVORITES", payload: data });
+      setFavorite(false);
     } else {
       dispatch({ type: "ADD_TO_FAVORITES", payload: data });
     }
