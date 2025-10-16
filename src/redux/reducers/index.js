@@ -15,7 +15,7 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         searchResults: {
           ...state.searchResults,
-          content: [action.payload],
+          content: action.payload,
         },
       };
     case "ADD_TO_FAVORITES": {

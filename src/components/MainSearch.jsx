@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Col, Form, Badge } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import Job from "./Job";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,13 +7,13 @@ import { StarFill } from "react-bootstrap-icons";
 
 const MainSearch = () => {
   const [query, setQuery] = useState("");
-  const [jobs, setJobs] = useState([]);
+  // const [jobs, setJobs] = useState([]);
 
   const dispatch = useDispatch();
 
   const favoriteLength = useSelector((state) => state.favorites.content.length);
 
-  // const searchResults = useSelector((state) => state.searchResults.content);
+  const searchResults = useSelector((state) => state.searchResults.content);
 
   const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
@@ -28,7 +28,7 @@ const MainSearch = () => {
       const response = await fetch(baseEndpoint + query + "&limit=20");
       if (response.ok) {
         const { data } = await response.json();
-        setJobs(data);
+        // setJobs(data);
         dispatch({ type: "Add_RESULTS", payload: data });
       } else {
         alert("Error fetching results");
@@ -60,7 +60,7 @@ const MainSearch = () => {
           </div>
         </Col>
         <Col xs={10} className="mx-auto mb-5">
-          {jobs.map((jobData) => (
+          {searchResults.map((jobData) => (
             <Job key={jobData._id} data={jobData} />
           ))}
         </Col>
